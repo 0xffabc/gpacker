@@ -7,7 +7,7 @@ class Obfuscator {
   #code = ""
   #refs = []
   
-  constructor(code, death=Date.now() + 1000 * 60 * 60 * 24) {
+  constructor(code, death = Date.now() + 1000 * 60 * 60 * 24) {
     this.#code = code;
     this.runtimeDefence(death);
   }
@@ -100,5 +100,6 @@ class Obfuscator {
     const magicRatio = resultedCode.length / this.ops.length;
     return resultedCode.replace("MAGIC_NUMBER", `this.toString().length*${magicRatio}`).replace("MAGIC__NUMBER", resultedCode.length / this.#refs.length);
   }
-  
-                       }
+}
+
+module.exports = Obfuscator;
