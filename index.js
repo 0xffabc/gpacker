@@ -1,5 +1,5 @@
 const fs = require("fs");
-const GPacker = require("src/gpacker.js");
+const GPacker = require("./gpacker.js");
 
 const readline = require("readline").createInterface({
   input: process.stdin,
@@ -7,6 +7,6 @@ const readline = require("readline").createInterface({
 });
 
 readline.question("Enter file path", path => {
-  console.log((new GPacker(fs.readFileSync(path))).compile());
+  fs.writeFileSync(path + ".obfs.js", (new GPacker(fs.readFileSync(path))).compile());
   readline.close();
 });
